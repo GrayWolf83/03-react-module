@@ -1,30 +1,15 @@
-import { useFetch } from './hooks/useFetch'
+import { useLocalStorage } from './hooks/useLocalStorage'
 import './App.css'
 
 function App() {
-	const { data, isLoading, error, refetch } = useFetch(
-		'https://jsonplaceholder.typicode.com/posts',
-	)
+	const [token, { setItem, removeItem }] = useLocalStorage('token')
 
 	return (
 		<div>
-			<div>
-				<button
-					onClick={() =>
-						refetch({
-							params: {
-								_limit: 3,
-							},
-						})
-					}>
-					Перезапросить
-				</button>
-			</div>
-			{isLoading && 'Загрузка...'}
-			{error && 'Произошла ошибка'}
-			{data &&
-				!isLoading &&
-				data.map((item) => <div key={item.id}>{item.title}</div>)}
+			<h4>Твой токен: {token}</h4>
+
+			<button onClick={() => setItem('token')}>Задать токен</button>
+			<button onClick={removeItem}>Удалить токен</button>
 		</div>
 	)
 }
