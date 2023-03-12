@@ -1,15 +1,20 @@
-import { useToggle } from './hooks/useToggle'
 import './App.css'
+import Task1 from './components/Task1'
+import Task2 from './components/Task2'
+import Task3 from './components/Task3'
+import Task4 from './components/Task4'
+import TaskAdd1 from './components/TaskAdd1'
+import TaskAdd2 from './components/TaskAdd2'
 
 function App() {
-	const [value, toggle] = useToggle(['blue', 'orange', 'cyan', 'teal'])
-
 	return (
 		<div>
-			<h4 className='title'>{value.toString()}</h4>
-
-			<button onClick={() => toggle()}>Toggle</button>
-			<button onClick={() => toggle('cyan')}>Set Cyan</button>
+			<Task1 />
+			<Task2 />
+			<Task3 />
+			<Task4 />
+			<TaskAdd1 />
+			<TaskAdd2 />
 		</div>
 	)
 }
